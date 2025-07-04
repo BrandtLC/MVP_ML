@@ -6,6 +6,7 @@ import numpy as np
 import sys
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 CORS(app)
 
 try:
@@ -15,10 +16,33 @@ except FileNotFoundError:
     sys.exit(1)
     
 
+colunas= [
+    'age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalch',
+    'exang', 'oldpeak', 'slope', 'ca', 'thal'
+]
+    
+
 @app.route('/')
 def home():
     return "API no ar"
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    return "Rota funcionando"
+    request_data = request.get_json()
+    
+    request_data['fbs'] = 1 if str(request_data['fbs']).lower() == 'true' else 0
+    request_data['exang'] = 1 if str(request_data['exang']).lower() == 'true' else 0
+    
+    df = pd.DataFrame([request_data], columns=colunas)
+    
+    previsao = modelo.predict(df)
+
+    resultado = int(previsao[0])
+    
+    return jsonify({
+            'diagnostico_previsto': resultado,
+            'diagnostico_texto': 'Doente' if resultado == 1 else 'Saudável',
+        })
+
+if __name__ == '__main__':
+    app.run(debug=True)
