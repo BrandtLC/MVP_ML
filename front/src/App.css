@@ -1,0 +1,109 @@
+/* Estilos Globais para o Tema Escuro */
+body {
+  border: 2px solid red;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;    /* Centraliza verticalmente */
+  min-height: 100vh;      /* Garante que o corpo ocupe a altura toda da tela */
+  margin: 0;              /* Remove margens padrão */
+  padding: 1rem;          /* Adiciona um pequeno espaçamento */
+  box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+/* Container principal da aplicação */
+.container {
+  background-color: #1e1e1e; /* Fundo do card um pouco mais claro */
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid #333;
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+}
+
+/* Título Principal */
+h1 {
+  color: #bb86fc; /* Cor de destaque roxa */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilo do Formulário */
+form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem 2rem;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #a9a9a9; /* Cor do rótulo um pouco mais suave */
+}
+
+/* Campos de entrada e seleção */
+input, select {
+  background-color: #333;
+  color: #e0e0e0;
+  padding: 0.8rem;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #bb86fc;
+}
+
+/* Botão de Previsão */
+.full-width {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+button {
+  background-color: #6200ee;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #3700b3;
+}
+
+button:disabled {
+  background-color: #555;
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* Área de Resultado */
+.result, .result-error {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.result-safe { background-color: rgba(3, 218, 197, 0.1); color: #03dac6; border: 1px solid #03dac6; }
+.result-risk { background-color: rgba(207, 102, 121, 0.15); color: #cf6679; border: 1px solid #cf6679; }
+.result-error { background-color: rgba(207, 102, 121, 0.15); color: #cf6679; border: 1px solid #cf6679; }
