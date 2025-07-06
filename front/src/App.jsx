@@ -73,7 +73,7 @@ function App() {
       const response = await axios.post('http://127.0.0.1:5000/predict', dataToSubmit);
       setResult(response.data);
     } catch (err) {
-      setError('Ocorreu um erro ao fazer a predição. Verifique se a API do back-end está rodando.');
+      setError('Ocorreu um erro ao fazer a predição.');
       console.error(err);
     } finally {
       setLoading(false);

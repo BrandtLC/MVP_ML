@@ -39,9 +39,13 @@ def predict():
 
     resultado = int(previsao[0])
     
+    probabilidades = modelo.predict_proba(df)      
+    confianca = float(max(probabilidades[0]))
+    
     return jsonify({
             'diagnostico_previsto': resultado,
             'diagnostico_texto': 'Doente' if resultado == 1 else 'Saudável',
+            'nivel_de_confianca': f"{confianca:.2%}"
         })
 
 if __name__ == '__main__':
